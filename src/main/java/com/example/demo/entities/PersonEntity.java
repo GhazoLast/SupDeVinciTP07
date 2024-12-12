@@ -31,6 +31,9 @@ public class PersonEntity {
         this.age = age;
     }
 
+    public Integer getId() {
+        return id;
+    }
     public String getFirstName() {
         return firstName;
     }

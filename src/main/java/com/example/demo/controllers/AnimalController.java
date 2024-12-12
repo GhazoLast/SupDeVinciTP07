@@ -10,8 +10,10 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -42,9 +44,12 @@ public class AnimalController {
     }
 
     @PostMapping("/")
-    public AnimalEntity postMethodName(@RequestBody @Valid AnimalEntity animalToCreate) {
+    public AnimalEntity createAnimal(@RequestBody @Valid AnimalEntity animalToCreate) {
         return this.animalService.create(animalToCreate);
     }
     
-    
+    @DeleteMapping("/delete/{id}")
+    public Map<String,Boolean> deleteAnimal(@RequestBody @Valid Integer id) {
+        return this.animalService.delete(id);
+    }
 }
