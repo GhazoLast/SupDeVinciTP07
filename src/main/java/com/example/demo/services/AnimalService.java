@@ -1,8 +1,6 @@
 package com.example.demo.services;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,12 +24,10 @@ public class AnimalService {
         return this.animalRepository.save(updatedAnimal);
     }
 
-    public Map<String, Boolean> delete(@Valid @PathVariable(value = "id") Integer animalId) {
-		AnimalEntity animal = animalRepository.findById(animalId);
-		animalRepository.delete(animal);
-		Map<String, Boolean> response = new HashMap<>();
-		response.put("deleted", Boolean.TRUE);
-		return response;
+    public String delete(@Valid @PathVariable(value = "id") Integer animalId) {
+		AnimalEntity animal = this.animalRepository.findById(animalId);
+		this.animalRepository.delete(animal);
+        return "Animal supprimé";
 	}
 
     public Collection<AnimalEntity> findAll() {

@@ -38,7 +38,7 @@ public class AnimalController {
         return this.animalService.findAll();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/")
     public AnimalEntity updateAnimal(@RequestBody @Valid AnimalEntity updatedAnimal) {
         return this.animalService.update(updatedAnimal);
     }
@@ -48,8 +48,8 @@ public class AnimalController {
         return this.animalService.create(animalToCreate);
     }
     
-    @DeleteMapping("/delete/{id}")
-    public Map<String,Boolean> deleteAnimal(@RequestBody @Valid Integer id) {
+    @DeleteMapping("/{id}")
+    public String deleteAnimal(@Valid @PathVariable("id") Integer id) {
         return this.animalService.delete(id);
     }
 }

@@ -2,8 +2,8 @@ package com.example.demo.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entities.PersonEntity;
-import com.example.demo.services.PersonService;
+import com.example.demo.entities.SpecieEntity;
+import com.example.demo.services.SpeciesService;
 
 import jakarta.validation.Valid;
 
@@ -23,34 +23,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @RestController
-@RequestMapping("/rest/person")
-public class PersonController {
+@RequestMapping("/rest/species")
+public class SpeciesController {
 
     @Autowired
-    PersonService personService;
+    SpeciesService speciesService;
 
     @GetMapping("/{id}")
-    public PersonEntity findOne(@PathVariable("id") Integer id) {
-        return this.personService.findById(id);
+    public SpecieEntity findOne(@PathVariable("id") Integer id) {
+        return this.speciesService.findById(id);
     }
     @GetMapping("/")
-    public Collection<PersonEntity> findAll() {
-        return this.personService.findAll();
+    public Collection<SpecieEntity> findAll() {
+        return this.speciesService.findAll();
     }
 
     @PutMapping("/")
-    public PersonEntity updatePerson(@RequestBody @Valid PersonEntity updatedPerson) {
-        return this.personService.update(updatedPerson);
+    public SpecieEntity updatePerson(@RequestBody @Valid SpecieEntity updatedPerson) {
+        return this.speciesService.update(updatedPerson);
     }
 
     @PostMapping("/")
-    public PersonEntity postMethodName(@RequestBody @Valid PersonEntity personToCreate) {
-        return this.personService.create(personToCreate);
+    public SpecieEntity postMethodName(@RequestBody @Valid SpecieEntity speciesToCreate) {
+        return this.speciesService.create(speciesToCreate);
     }
     
     @DeleteMapping("/{id}")
     public String deletePerson(@Valid @PathVariable("id") Integer id) {
-        return this.personService.remove(id);
+        return this.speciesService.delete(id);
     }
     
 }

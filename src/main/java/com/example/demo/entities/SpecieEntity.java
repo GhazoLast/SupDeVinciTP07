@@ -21,8 +21,16 @@ public class SpecieEntity {
     @Column(name = "latin_name")
     private String latinName;
 
+    public Integer getId() {
+        return id;
+    }
+    
     public String getCommonName() {
         return commonName;
+    }
+
+    public String getLatinName() {
+        return latinName;
     }
 
     public SpecieEntity() {}
